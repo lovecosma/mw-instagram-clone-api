@@ -7,11 +7,10 @@ class SessionsController < ApplicationController
         else
             render json: {status: "error", code: 400, message: "Can't find purchases without start and end date"}
         end
-        end 
     end 
 
     def destroy 
-        session.delete
+        session[:user_id] = nil
     end 
 
 
