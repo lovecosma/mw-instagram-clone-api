@@ -3,7 +3,12 @@ class PostsController < ApplicationController
     include Rails.application.routes.url_helpers
     
     def index 
-        render json: Post.all
+        session[:user_id] =
+        if(params[:id] == session[:user_id])
+           redner json:  Post.all
+        else
+            render json: "error", :error => :unproccessable_entity
+        end 
     end 
 
 
